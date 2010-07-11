@@ -1,0 +1,81 @@
+h2 {
+    font-family: Impact,Arial;
+    color: orange;
+}
+
+.des {
+    font-family: Lucida,Courier;
+    font-weight: lighter;
+    color: gray;
+}
+
+.ko3class {
+    border: solid;
+    border-width: 1px;
+    border-color: green;
+    padding: 3px;
+    font-family: Trebuchet,Verdana,Times;
+    font-size: 13px;
+}
+
+.classname {
+    text-align: center;
+    color: white;
+    font-size: large;
+    font-family: Tahoma,Arial;
+    background: green;
+}
+
+.capt {
+    text-align: center;
+    color: green;
+    font-weight: normal;
+    font-family: Verdana,Arial;
+    font-size: small;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    z-index:1000;
+    background: white;
+    border: solid;
+    border-width: 1px;
+    border-color: orange;
+    width:270px;
+    font-size:small;
+    padding: 5px;
+}
+
+.closebtn {
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    font-family: Arial;
+    font-size: small;
+    background: #ffbe64;
+    width: 100%;
+}
+
+.highlight {
+    background: #afffaf;
+}
+
+.stats {
+    text-align: center;
+    padding: 10px;
+}
+
+div.item span {
+    cursor: pointer;
+}
+
+span.static {
+    font-style: italic;
+}
+
+.tooltip h4 {
+    font-family: Tahoma,Arial;
+    font-weight:bold;
+}
+
