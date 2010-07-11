@@ -18,15 +18,15 @@ REQUIREMENTS
 INSTALLATION
 ============
 
-1. Unpack module folder in <Kohana PATH>/modules/ dir.
-2. Add to file <Kohana PATH>/application/bootstrap.php into array parameter of Kohana::modules() entry 
+1. Unpack module folder in Kohana_PATH/modules/ dir.
+2. Add to file Kohana_PATH/application/bootstrap.php into array parameter of Kohana::modules() entry 
 	'cheatsheet' => MODPATH.'cheatsheet',
 
 ================
 WORK WITH MODULE
 ================
 
-Browse http://<Kohana baseurl>/cs
+Browse http://example.com/cs
 
 Click on a property/method name to see its parameters and description (if they exist). Click one more time to hide block. Or click on "close" button inside the description block to close it.
 
@@ -34,11 +34,11 @@ You can resize page to change text size and number of columns in the browser win
 
 You can manually invalidate cache by clicking "Invalidate cache" link at the bottom of the page.
 
-You can set in module config (<Kohana PATH>/modules/cheatsheet/config/cs.php):
+You can set in module config (Kohana_PATH/modules/cheatsheet/config/cs.php):
 1. some classes that should not be included in the sheet (you can use masks with asterisk). In the current version you can set precise class name to ignore (e.g., 'kohana_log') or use following mask types:
-- beginning of the class name (e.g. 'someword*' will exclude from the sheet 'someword_about_love')
-- ending of the class name (e.g. '*someword' will exclude from the sheet 'tell_me_someword')
-- occurrence in the class name (e.g. '*someword*' will exclude from the sheet 'tell_me_someword_about_love') 
++ beginning of the class name (e.g. 'someword\*' will exclude from the sheet 'someword_about_love')
++ ending of the class name (e.g. '\*someword' will exclude from the sheet 'tell_me_someword')
++ occurrence in the class name (e.g. '\*someword\*' will exclude from the sheet 'tell_me_someword_about_love') 
 2. should cache be turned on (TRUE or FALSE) -- I recommend set to TRUE, cache is on real data, not expiration time 
 
 =====
@@ -49,35 +49,28 @@ In the current version module does not support i18n — works only in English.
 
 Module was tested in Firefox 3.5, Opera 10 browsers.
 
-=========================
-KNOWN ISSUES AND FEATURES
-=========================
-
-Not known yet
-
 =========
 CHANGELOG
 =========
 
 From v. 0.3
 modifications:
-- updated class excluding options variants
-bugfixes:
-- fixed failure while working with Kohana 3.0.6
++ updated class excluding options variants
+fixed bugs:
++ fixed failure while working with Kohana 3.0.6
 
 From v. 0.2
 added features:
-- manual cache invalidation
-- ignore directories
-- "close" button for easier description block closing
++ manual cache invalidation
++ ignore directories
++ "close" button for easier description block closing
 
 From v. 0.1
 fixed bugs:
-- code in param/method desription goes outside of a block 
-
++ code in param/method desription goes outside of a block 
 added features:
-- data cache
-- a few design modifications 
++ data cache
++ a few design modifications 
 
 =========
 USED CODE
