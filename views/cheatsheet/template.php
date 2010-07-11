@@ -69,7 +69,8 @@ foreach ($content as $name=>$stuff)
                     $params = array();
                     foreach ($me->params as $p)
                     {
-                        $params[] = '$'.$p->name; 
+                        $defaults = $p->default ? ' = '.$p->default : '';
+                        $params[] = '<small>'.$p->type.'</small> $'.$p->name.$defaults; 
                     }
                                 
                     $params = implode(', ', $params); 
