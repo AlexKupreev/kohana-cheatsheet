@@ -2,7 +2,7 @@
 
 Short description: module for quick review of present Kohana classes and their properties/methods.
 
-Current version: 0.4
+Current version: 0.5
 
 Demo: http://ko3.kupreev.com/cs
 
@@ -24,6 +24,8 @@ Email: alexander dot kupreev at gmail dot com
 ##Usage
 
 Browse http://example.com/cs
+
+Click on a question sign near the class name to see the class description.
 
 Click on a property/method name to see its parameters and description (if they exist). Click one more time to hide block. Or click on "close" button inside the description block to close it.
 
@@ -51,32 +53,33 @@ Module was tested in Firefox 3.5+, Opera 10+ browsers.
 
 ##Changelog
 
+###From v. 0.4
+
+ * updated jquery to 1.4.4
+ 
+ * added class info
+ 
+ * fixed media output issues
+
 ###From v. 0.3
-modifications:
 
  * updated class excluding options variants
-
-fixed bugs:
 
  * fixed failure while working with Kohana 3.0.6
 
 ###From v. 0.2
-added features:
 
- * manual cache invalidation
+ * added manual cache invalidation
 
- * ignore directories
+ * added ignore directories
 
- * "close" button for easier description block closing
+ * added "close" button for easier description block closing
 
 ###From v. 0.1
-fixed bugs:
 
- * code in param/method desription goes outside of a block 
+ * partially fixed bug when code in param/method desription goes outside of a block 
 
-added features:
-
- * data cache
+ * added data cache
 
  * a few design modifications 
 

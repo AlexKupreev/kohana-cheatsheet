@@ -17,14 +17,25 @@ foreach ($styles as $style => $media)
     
 <div id="cs">
 <?php   
-foreach ($content as $name=>$stuff)
+$close_btn = '<div class="closebtn">close</div>';
+
+foreach ($content as $name => $stuff)
 {   
 ?>
     <div class="ko3class">
-        <div class="classname"><?php echo $name;?></div>
+        <div class="classname item">
+        	<?php echo $name;?>
+        	<?php 
+        	if ($stuff['description'] OR $stuff['modifiers'])
+        	{
+				?>
+				<span>&nbsp;?&nbsp;</span><div class="tooltip"><?php echo $close_btn.$stuff['modifiers'].$stuff['description']; ?></div>
+				<?
+        	}
+        	?>        	
+        </div>
         <?php
-    $close_btn = '<div class="closebtn">close</div>';
-                    
+                        
     if ( ! empty($stuff['properties']))
     {
 ?>

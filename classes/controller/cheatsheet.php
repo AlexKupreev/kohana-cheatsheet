@@ -193,18 +193,20 @@ class Controller_Cheatsheet extends Controller_Template {
             foreach ($classes as $class)
             {
                 $r_class = Kodoc_Class::factory($class);
-
+                
                 // to prevent exception when Kodoc::properties() throws exception
                 try
                 {
                     $props = $r_class->properties();
-                } catch (Exception $e) {
+                } catch (Kohana_Exception $e) {
                     $props = array();
 
                     $msg[] = $e->getMessage();
                 }
 
                 $classes[$class] = array(
+                	'description' => $r_class->description,
+                	'modifiers'	=> $r_class->modifiers,
                     'properties' => $props,
                     'methods' => $r_class->methods(),
                     );              

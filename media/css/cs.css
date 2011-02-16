@@ -24,6 +24,7 @@ h2 {
     font-size: large;
     font-family: Tahoma,Arial;
     background: green;
+    position: relative;
 }
 
 .capt {
@@ -45,6 +46,18 @@ h2 {
     width:270px;
     font-size:small;
     padding: 5px;
+}
+
+.classname > div.tooltip {
+	color : black;
+	text-align: left;
+}
+
+.classname span {
+	color : orange;
+	font-family: Courier;
+	position: absolute;
+	right: 5px;
 }
 
 .closebtn {
