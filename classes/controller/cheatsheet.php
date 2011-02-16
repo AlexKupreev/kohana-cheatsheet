@@ -252,57 +252,58 @@ class Controller_Cheatsheet extends Controller_Template {
      */
     public function action_media()
     {
-	    // Get the file path from the request
-	    $file = $this->request->param('file');
+		// Get the file path from the request
+		$file = $this->request->param('file');
 
-	    // Find the file extension
-	    $ext = pathinfo($file, PATHINFO_EXTENSION);
+		// Find the file extension
+		$ext = pathinfo($file, PATHINFO_EXTENSION);
 
-	    // Remove the extension from the filename
-	    $file = substr($file, 0, -(strlen($ext) + 1));
+		// Remove the extension from the filename
+		$file = substr($file, 0, -(strlen($ext) + 1));
 
-	    if ($file = Kohana::find_file('media', $file, $ext))
-	    {
-       	    // Send the file content as the response
-                $this->request->response = file_get_contents($file);
-	    }
-	    else
-	    {
-	    // Return a 404 status
-                $this->request->status = 404;
-	    }
+		if ($file = Kohana::find_file('media', $file, $ext))
+		{
+			$this->request->check_cache(sha1($this->request->uri).filemtime($file)); 
 
-	    // Set the content type for this extension
-	    $this->request->headers['Content-Type'] = File::mime_by_ext($ext);
-    }
+			// Send the file content as the response
+			$this->request->response = file_get_contents($file);
+		}
+		else
+		{
+		// Return a 404 status
+			$this->request->status = 404;
+		}
+
+		$this->request->headers['Content-Type']   = File::mime_by_ext($ext);
+		$this->request->headers['Content-Length'] = filesize($file);
+		$this->request->headers['Last-Modified']  = date('r', filemtime($file));
+	}
 
     /**
      * modified from userguide module controller
      */
     public function after()
     {
-	if ($this->auto_render)
-	{
-	// Get the media route
-            $media = Route::get('docs/media');
+	    if ($this->auto_render)
+	    {
+			// Get the media route
+			$media = Route::get('cheatsheet');
 
-            // Add styles
-            $this->template->styles = array(
-                $media->uri(array('file' => 'css/cs.css')) => 'screen',
-            );
+			// Add styles
+			$this->template->styles = array(
+				$media->uri(array('action' => 'media', 'file' => 'css/cs.css')) => 'screen',
+				);
 
-	// Add scripts
-            $this->template->scripts = array(
-                $media->uri(array('file' => 'js/jquery-1.4.4.min.js')),
-                $media->uri(array('file' => 'js/jquery.columnizer.min.js')),
-                $media->uri(array('file' => 'js/cs.js')),
-                
-            );
-
-	
+			// Add scripts
+			$this->template->scripts = array(
+				$media->uri(array('action' => 'media', 'file' => 'js/jquery-1.4.4.min.js')),
+				$media->uri(array('action' => 'media', 'file' => 'js/jquery.columnizer.min.js')),
+				$media->uri(array('action' => 'media', 'file' => 'js/cs.js')),
+				);
+            
         }
 
-	return parent::after();
+	    return parent::after();
     }
     
 } 
