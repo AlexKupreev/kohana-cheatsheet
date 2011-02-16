@@ -293,8 +293,8 @@ class Controller_Cheatsheet extends Controller_Template {
 
 	// Add scripts
             $this->template->scripts = array(
-                $media->uri(array('file' => 'js/jquery-1.3.2.min.js')),
-                $media->uri(array('file' => 'js/autocolumn.min.js')),
+                $media->uri(array('file' => 'js/jquery-1.4.4.min.js')),
+                $media->uri(array('file' => 'js/jquery.columnizer.min.js')),
                 $media->uri(array('file' => 'js/cs.js')),
                 
             );
