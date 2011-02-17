@@ -3,7 +3,7 @@
  * Kohana cheat sheet browser.
  *
  * @author     Alexander Kupreev (http://kupreev.com, alexander dot kupreev at gmail dot com)
- * @version    0.4
+ * @version    0.5
  */
 class Controller_Cheatsheet extends Controller_Template {
 
@@ -16,21 +16,24 @@ class Controller_Cheatsheet extends Controller_Template {
      */
     public function before()
     {
-	if ($this->request->action === 'media')
-	{
-        // Do not template media files
-        $this->auto_render = FALSE;
-	}
-	else
-	{
+		if ($this->request->action() === 'media')
+		{
+        	// Do not template media files
+        	$this->auto_render = FALSE;
+		}
+		else
+		{
 
-        // Use customized Markdown parser
-        define('MARKDOWN_PARSER_CLASS', 'Kodoc_Markdown');
+        	// Use customized Markdown parser
+        	define('MARKDOWN_PARSER_CLASS', 'Kodoc_Markdown');
 
-        // Load Markdown support
-        require Kohana::find_file('vendor', 'markdown/markdown');
+        	if ( ! class_exists('Markdown', FALSE))
+			{
+        		// Load Markdown support
+        		require Kohana::find_file('vendor', 'markdown/markdown');
+			}
         
-	}
+		}
 
 	    parent::before();
     }
@@ -265,20 +268,20 @@ class Controller_Cheatsheet extends Controller_Template {
 
 		if ($file = Kohana::find_file('media', $file, $ext))
 		{
-			$this->request->check_cache(sha1($this->request->uri).filemtime($file)); 
+			$this->request->check_cache(sha1($this->request->uri()).filemtime($file)); 
 
 			// Send the file content as the response
-			$this->request->response = file_get_contents($file);
+			$this->response->body(file_get_contents($file));
+			
+			$this->response->headers('content-type',  File::mime_by_ext($ext));
+			$this->response->headers('last-modified', date('r', filemtime($file)));
 		}
 		else
 		{
-		// Return a 404 status
-			$this->request->status = 404;
+			// Return a 404 status
+			$this->response->status(404);
 		}
 
-		$this->request->headers['Content-Type']   = File::mime_by_ext($ext);
-		$this->request->headers['Content-Length'] = filesize($file);
-		$this->request->headers['Last-Modified']  = date('r', filemtime($file));
 	}
 
     /**

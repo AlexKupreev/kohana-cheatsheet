@@ -12,7 +12,7 @@ Email: alexander dot kupreev at gmail dot com
 
 ##Requirements
 
- 1. PHP framework Kohana 3.0.6+
+ 1. PHP framework Kohana **3.1.0+**
  2. Kohana Userguide Module activated.
 
 ##Installation
