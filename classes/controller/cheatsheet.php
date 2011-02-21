@@ -268,7 +268,7 @@ class Controller_Cheatsheet extends Controller_Template {
 
 		if ($file = Kohana::find_file('media', $file, $ext))
 		{
-			$this->request->check_cache(sha1($this->request->uri()).filemtime($file)); 
+			$this->response->check_cache(sha1($this->request->uri()).filemtime($file), $this->request); 
 
 			// Send the file content as the response
 			$this->response->body(file_get_contents($file));
